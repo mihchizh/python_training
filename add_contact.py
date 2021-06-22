@@ -13,7 +13,7 @@ class AddContact(unittest.TestCase):
         wd = self.wd
         self.Login(wd, username="admin", pasword="secret")
         self.contact_name(wd, FirstName="Miha", MiddleName="testov", LastName="Tetki")
-        self.company(wd)
+        self.company(wd, "ret", "auriga", "Russia")
         self.phones(wd, Home="2222222", mobile="3333333", Work="1111111", Fax="1234567")
         self.emails(wd)
         self.home_page(wd)
@@ -85,16 +85,16 @@ class AddContact(unittest.TestCase):
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(Fax)
 
-    def company(self, wd):
+    def company(self, wd, Title, CompanyName, CompanyAdress):
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys("ret")
+        wd.find_element_by_name("title").send_keys(Title)
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys("auriga")
+        wd.find_element_by_name("company").send_keys(CompanyName)
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys("Russia")
+        wd.find_element_by_name("address").send_keys(CompanyAdress)
 
     def contact_name(self, wd, FirstName, MiddleName, LastName):
         wd.find_element_by_link_text("add new").click()
