@@ -2,6 +2,7 @@
 from selenium import webdriver
 
 from selenium.webdriver.support.ui import Select
+from Contact import Contact
 import unittest
 
 class AddContact(unittest.TestCase):
@@ -13,7 +14,7 @@ class AddContact(unittest.TestCase):
         wd = self.wd
         self.Login(wd, username="admin", pasword="secret")
         self.contact_name(wd, FirstName="Miha", MiddleName="testov", LastName="Tetki")
-        self.company(wd, Title="ret", CompanyName="auriga", CompanyAdress="Russia")
+        self.company(wd, Contact(Title="ret", CompanyName="auriga", CompanyAdress="Russia"))
         self.phones(wd, Home="2222222", mobile="3333333", Work="1111111", Fax="1234567")
         self.emails(wd)
         self.home_page(wd)
@@ -26,7 +27,7 @@ class AddContact(unittest.TestCase):
         wd = self.wd
         self.Login(wd, username="admin", pasword="secret")
         self.contact_name(wd, FirstName="Miha1", MiddleName="testov1", LastName="Tetki1")
-        self.company(wd, Title="ret1", CompanyName="auriga1", CompanyAdress="Russia1")
+        self.company(wd, Contact(Title="ret1", CompanyName="auriga1", CompanyAdress="Russia1"))
         self.phones(wd, Home="44444444", mobile="5555555", Work="66666666", Fax="987654321")
         self.emails(wd)
         self.home_page(wd)
@@ -98,16 +99,16 @@ class AddContact(unittest.TestCase):
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(Fax)
 
-    def company(self, wd, Title, CompanyName, CompanyAdress):
+    def company(self, wd, Contact):
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(Title)
+        wd.find_element_by_name("title").send_keys(Contact.Title)
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(CompanyName)
+        wd.find_element_by_name("company").send_keys(Contact.CompanyName)
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(CompanyAdress)
+        wd.find_element_by_name("address").send_keys(Contact.CompanyAdress)
 
     def contact_name(self, wd, FirstName, MiddleName, LastName):
         wd.find_element_by_link_text("add new").click()
