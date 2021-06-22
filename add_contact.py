@@ -125,13 +125,6 @@ class AddContact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(pasword)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
-
-    
-    def is_alert_present(self):
-        try: self.wd.switch_to_alert()
-        except NoAlertPresentException as e: return False
-        return True
-    
     def close_alert_and_get_its_text(self):
         try:
             alert = self.wd.switch_to_alert()
