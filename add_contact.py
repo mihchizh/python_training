@@ -22,6 +22,19 @@ class AddContact(unittest.TestCase):
         self.Secondary(wd)
         self.return_home_page(wd)
         self.Logout(wd)
+    def test_add_new_contact(self):
+        wd = self.wd
+        self.Login(wd, username="admin", pasword="secret")
+        self.contact_name(wd, FirstName="Miha1", MiddleName="testov1", LastName="Tetki1")
+        self.company(wd, Title="ret1", CompanyName="auriga1", CompanyAdress="Russia1")
+        self.phones(wd, Home="44444444", mobile="5555555", Work="66666666", Fax="987654321")
+        self.emails(wd)
+        self.home_page(wd)
+        self.date_of_birthday(wd)
+        self.select_group(wd)
+        self.Secondary(wd)
+        self.return_home_page(wd)
+        self.Logout(wd)
 
     def Logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
