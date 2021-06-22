@@ -13,7 +13,7 @@ class AddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
-        self.Login(wd)
+        self.Login(wd, username="admin", pasword="secret")
         self.contact_name(wd)
         self.company(wd)
         self.phones(wd)
@@ -114,15 +114,15 @@ class AddContact(unittest.TestCase):
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys("telega")
 
-    def Login(self, wd):
+    def Login(self, wd, username, pasword):
         # login
         wd.get("http://localhost/addressbook/group.php")
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_name("pass").send_keys(pasword)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def is_element_present(self, how, what):
