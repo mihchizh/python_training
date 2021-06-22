@@ -13,7 +13,7 @@ class AddContact(unittest.TestCase):
         wd = self.wd
         self.Login(wd, username="admin", pasword="secret")
         self.contact_name(wd, FirstName="Miha", MiddleName="testov", LastName="Tetki")
-        self.company(wd, "ret", "auriga", "Russia")
+        self.company(wd, Title="ret", CompanyName="auriga", CompanyAdress="Russia")
         self.phones(wd, Home="2222222", mobile="3333333", Work="1111111", Fax="1234567")
         self.emails(wd)
         self.home_page(wd)
