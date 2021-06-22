@@ -15,23 +15,26 @@ class TestAddGroup(unittest.TestCase):
         self.open_home_page(wd)
         self.Login(wd, username="admin", password="secret")
         self.open_groups_page(wd)
+        self.create_group1(wd, name="New group", header="Test header", footer="Test footer")
+        self.return_to_group_page(wd)
+        # logout
+        wd.find_element_by_link_text("Logout").click()
+
+    def create_group1(self, wd, name, header, footer):
         # init group creation
         wd.find_element_by_name("new").click()
         # fill group form
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("New group")
+        wd.find_element_by_name("group_name").send_keys(name)
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("Test header")
+        wd.find_element_by_name("group_header").send_keys(header)
         self.create_group(wd)
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("Test footer")
+        wd.find_element_by_name("group_footer").send_keys(footer)
         # submit group creation
         wd.find_element_by_name("submit").click()
-        self.return_to_group_page(wd)
-        # logout
-        wd.find_element_by_link_text("Logout").click()
 
     def return_to_group_page(self, wd):
         # return to group page
