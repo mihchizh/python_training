@@ -13,7 +13,7 @@ class TestAddGroup(unittest.TestCase):
     def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.Login(wd)
+        self.Login(wd, username="admin", password="secret")
         self.open_groups_page(wd)
         # init group creation
         wd.find_element_by_name("new").click()
@@ -44,13 +44,13 @@ class TestAddGroup(unittest.TestCase):
         # open groups page
         wd.find_element_by_link_text("groups").click()
 
-    def Login(self, wd):
+    def Login(self, wd, username, password):
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def open_home_page(self, wd):
