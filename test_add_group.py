@@ -14,14 +14,12 @@ class TestAddGroup(unittest.TestCase):
     def test_add_group(self):
         wd = self.wd
         self.Login(wd, username="admin", password="secret")
-        self.open_groups_page(wd)
         self.create_group1(wd, Group(name="New group", header="Test header", footer="Test footer"))
         self.return_to_group_page(wd)
         self.Logout(wd)
     def test_add_empty_group(self):
         wd = self.wd
         self.Login(wd, username="admin", password="secret")
-        self.open_groups_page(wd)
         self.create_group1(wd, Group(name="", header="", footer=""))
         self.return_to_group_page(wd)
         self.Logout(wd)
@@ -31,6 +29,7 @@ class TestAddGroup(unittest.TestCase):
 
     def create_group1(self, wd, group):
         # init group creation
+        self.open_groups_page(wd)
         wd.find_element_by_name("new").click()
         # fill group form
         wd.find_element_by_name("group_name").click()
