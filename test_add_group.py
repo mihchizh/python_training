@@ -19,5 +19,3 @@ def test_add_empty_group(app):
     app.create_group1(Group(name="", header="", footer=""))
     app.Logout()
 
-def tearDown(self):
-    app.destroy()
