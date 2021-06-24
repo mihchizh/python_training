@@ -1,23 +1,16 @@
-from selenium import webdriver
-from fixture.session import SessionHelper
-from fixture.group import GroupHelper
+class GroupHelper:
 
-class Application:
-
-    def __init__(self):
-        self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
-        self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
+    def __init__(self, app):
+        self.app = app
 
     def open_home_page(self):
         # open home page
         wd = self.wd
         wd.get("http://localhost/addressbook/group.php?selected%5B%5D=1&delete=Delete+group%28s%29")
 
-    def create_group1(self, group):
+    def create(self, group):
         # init group creation
-        wd = self.wd
+        wd = self.app.wd
         self.open_groups_page()
         wd.find_element_by_name("new").click()
         # fill group form
@@ -36,18 +29,14 @@ class Application:
 
     def return_to_group_page(self):
         # return to group page
-        wd = self.wd
+        wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
 
     def create_group(self):
-        wd = self.wd
+        wd = self.app.wd
         wd.find_element_by_name("group_footer").click()
 
     def open_groups_page(self):
         # open groups page
-        wd = self.wd
+        wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
-
-
-    def destroy(self):
-        self.wd.quit()
