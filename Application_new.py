@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-class Application:
+class Application_new:
 
     def __init__(self):
         self.wd = webdriver.Firefox()
@@ -10,6 +10,9 @@ class Application:
         # open home page
         wd = self.wd
         wd.get("http://localhost/addressbook/group.php")
+
+    def home_page(self, wd):
+        wd.find_element_by_link_text("home page").click()
 
     def Login(self, username, password):
         wd = self.wd
@@ -91,19 +94,6 @@ class Application:
         wd.find_element_by_name("notes").send_keys(Contact.notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def return_to_group_page(self):
-        # return to group page
-        wd = self.wd
-        wd.find_element_by_link_text("group page").click()
-
-    def create_group(self):
-        wd = self.wd
-        wd.find_element_by_name("group_footer").click()
-
-    def open_groups_page(self):
-        # open groups page
-        wd = self.wd
-        wd.find_element_by_link_text("groups").click()
 
     def Logout(self):
         # logout
