@@ -48,7 +48,7 @@ class AddContact(unittest.TestCase):
 
     def home_page(self, wd):
         wd.find_element_by_link_text("home page").click()
-        wd.get("http://localhost/addressbook/group.php")
+
 
     def Create_new_contact(self, wd, Contact):
         wd.find_element_by_link_text("add new").click()
@@ -120,6 +120,7 @@ class AddContact(unittest.TestCase):
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
     def Login(self, wd, username, password):
+        wd.get("http://localhost/addressbook/group.php")
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
