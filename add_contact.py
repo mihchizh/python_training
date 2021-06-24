@@ -8,7 +8,7 @@ import unittest
 class AddContact(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
+        self.wd.implicitly_wait(20)
 
     def test_add_contact(self):
         wd = self.wd
