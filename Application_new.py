@@ -1,54 +1,26 @@
-# -*- coding: utf-8 -*-
 from selenium import webdriver
 
-from selenium.webdriver.support.ui import Select
-from Contact import Contact
-import unittest
+class Application:
 
-class AddContact(unittest.TestCase):
-    def setUp(self):
+    def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    def test_add_contact(self):
+    def open_home_page(self):
+        # open home page
         wd = self.wd
-        self.Login(wd, username="admin", password="secret" )
-        # create new cotact
-        self.Create_new_contact(wd, Contact(firstname="Miha", middlename="testov", lastname="Tetki", nickname="telega",
-                           title="ret", companyname="auriga", companyadress="Russia", homephone="2222222", mobilephone="3333333",
-                           workphone="1111111", fax="1234567", email="test@test.ru", email2="test1@test.ru",
-                           homepage="localrussia.com", bday="2", bmonth="May", byear="1985", group="New group",
-                           adress2="Russia 1", phone2="Gorky", notes="notes"))
-
-
-        # home page
-        self.home_page(wd)
-        self.Logout(wd)
-
-    def test_add_new_contact(self):
-        wd = self.wd
-        self.Login(wd, username="admin", password="secret")
-        # create new cotact
-        self.Create_new_contact(wd, Contact(firstname="Miha1", middlename="testov1", lastname="Tetki1", nickname="telega1",
-                                            title="ret1", companyname="auriga1", companyadress="Russia1",
-                                            homephone="22222221", mobilephone="33333331",
-                                            workphone="11111111", fax="12345671", email="test1@test.ru",
-                                            email2="test1@test.ru",
-                                            homepage="localrussia1.com", bday="2", bmonth="May", byear="1985",
-                                            group="New group",
-                                            adress2="Russia 11", phone2="Gorky1", notes="notes1"))
-
-        # home page
-        self.home_page(wd)
-        self.Logout(wd)
-
-
-    def Logout(self, wd):
-        wd.find_element_by_link_text("Logout").click()
-
-    def home_page(self, wd):
-        wd.find_element_by_link_text("home page").click()
         wd.get("http://localhost/addressbook/group.php")
+
+    def Login(self, username, password):
+        wd = self.wd
+        self.open_home_page()
+        wd.find_element_by_name("user").click()
+        wd.find_element_by_name("user").clear()
+        wd.find_element_by_name("user").send_keys(username)
+        wd.find_element_by_name("pass").click()
+        wd.find_element_by_name("pass").clear()
+        wd.find_element_by_name("pass").send_keys(password)
+        wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def Create_new_contact(self, wd, Contact):
         wd.find_element_by_link_text("add new").click()
@@ -119,18 +91,24 @@ class AddContact(unittest.TestCase):
         wd.find_element_by_name("notes").send_keys(Contact.notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def Login(self, wd, username, password):
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//input[@value='Login']").click()
+    def return_to_group_page(self):
+        # return to group page
+        wd = self.wd
+        wd.find_element_by_link_text("group page").click()
 
-    def tearDown(self):
+    def create_group(self):
+        wd = self.wd
+        wd.find_element_by_name("group_footer").click()
+
+    def open_groups_page(self):
+        # open groups page
+        wd = self.wd
+        wd.find_element_by_link_text("groups").click()
+
+    def Logout(self):
+        # logout
+        wd = self.wd
+        wd.find_element_by_link_text("Logout").click()
+
+    def destroy(self):
         self.wd.quit()
-
-
-if __name__ == "__main__":
-    unittest.main()
