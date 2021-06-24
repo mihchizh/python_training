@@ -3,11 +3,6 @@ class GroupHelper:
     def __init__(self, app):
         self.app = app
 
-    def open_home_page(self):
-        # open home page
-        wd = self.wd
-        wd.get("http://localhost/addressbook/group.php?selected%5B%5D=1&delete=Delete+group%28s%29")
-
     def create(self, group):
         # init group creation
         wd = self.app.wd
