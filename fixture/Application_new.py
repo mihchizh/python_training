@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.webdriver.support.select import Select
+
 
 class Application_new:
 
