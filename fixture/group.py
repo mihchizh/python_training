@@ -8,6 +8,12 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         wd.find_element_by_name("new").click()
+        self.fill_group_form(group)
+        # submit group creation
+        wd.find_element_by_name("submit").click()
+        self.return_to_group_page()
+
+    def fill_group_form(self, group):
         # fill group form
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
@@ -15,12 +21,8 @@ class GroupHelper:
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
         wd.find_element_by_name("group_header").send_keys(group.header)
-        self.create_group()
         wd.find_element_by_name("group_footer").clear()
         wd.find_element_by_name("group_footer").send_keys(group.footer)
-        # submit group creation
-        wd.find_element_by_name("submit").click()
-        self.return_to_group_page()
 
     def edit(self, group):
         wd = self.app.wd
@@ -28,16 +30,7 @@ class GroupHelper:
         self.select_first_group()
         # select edit group
         wd.find_element_by_name("edit").click()
-        # fill group form
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.name)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.header)
-        self.create_group()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.footer)
+        self.fill_group_form(group)
         # submit group update
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
@@ -72,5 +65,7 @@ class GroupHelper:
         self.select_first_group()
         # open modification form
         wd.find_element_by_name("edit").click()
-        # fill group form
+        self.fill_group_form(new_group_data)
         # submit modification
+        wd.find_element_by_name("update").click()
+        self.return_to_group_page()
