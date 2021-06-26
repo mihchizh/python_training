@@ -83,8 +83,10 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         # submit deletion
         wd.find_element_by_xpath("//*[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
 
     def open_home_page(self):
         # open home page
         wd = self.app.wd
         wd.get("http://localhost/addressbook")
+
