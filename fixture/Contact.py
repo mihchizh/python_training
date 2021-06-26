@@ -80,8 +80,8 @@ class ContactHelper:
         wd = self.app.wd
         self.open_home_page()
         # select first contact
-        wd.find_element_by_name("selected[]").click()
-        # edit
+        self.select_first_contact()
+        # select edit contact
         wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -147,11 +147,14 @@ class ContactHelper:
         wd.find_element_by_name("notes").send_keys(Contact.notes)
         wd.find_element_by_name("update").click()
 
+    def select_first_contact(self):
+        wd.find_element_by_name("selected[]").click()
+
     def delete_first_contact(self):
         wd = self.app.wd
         self.open_home_page()
         # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_contact()
         # submit deletion
         wd.find_element_by_xpath("//*[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
