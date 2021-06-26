@@ -11,10 +11,10 @@ def solve(a, b, c):
         else:
             x1 = (-b + sqrt(d)) / (2 * a)
             x2 = (-b + sqrt(d)) / (2 * a)
-            print("Two solutions" + str(x1) + "and" + str(x2)
+            print("Two solutions" + str(x1) + "and" + str(x2))
 
 
 
-solve(1, 1, 1)
-solve(1, 2, 1)
-solve(1, 5, 6)
+solve(1,1,1)
+solve(1,2,1)
+solve(1,5,6)
