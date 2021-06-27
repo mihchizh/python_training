@@ -31,8 +31,6 @@ class ContactHelper:
     def edit_first_contact(self, new_contact_data):
         wd = self.app.wd
         self.open_home_page()
-        # select first contact
-        self.select_first_contact()
         # select edit contact
         wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         self.fill_contact_form(new_contact_data)
