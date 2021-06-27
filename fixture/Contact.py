@@ -21,12 +21,12 @@ class ContactHelper:
 
 
 
-    def change_field_value(self, text, field_name):
+    def change_field_value(self, field_firstname, text):
         wd = self.app.wd
         if text is not None:
-            wd.find_element_by_name(field_name).click()
-            wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
+            wd.find_element_by_name(field_firstname).click()
+            wd.find_element_by_name(field_firstname).clear()
+            wd.find_element_by_name(field_firstname).send_keys(text)
 
     def edit_first_contact(self, new_contact_data):
         wd = self.app.wd
