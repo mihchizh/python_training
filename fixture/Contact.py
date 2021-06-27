@@ -18,22 +18,35 @@ class ContactHelper:
         self.change_field_value("middlename", Contact.middlename)
         self.change_field_value("lastname", Contact.lastname)
         self.change_field_value("nickname", Contact.nickname)
+        self.change_field_value("title", Contact.title)
+        self.change_field_value("company", Contact.company)
+        self.change_field_value("address", Contact.address)
+        self.change_field_value("home", Contact.homephone)
+        self.change_field_value("mobile", Contact.mobilephone)
+        self.change_field_value("work", Contact.workphone)
+        self.change_field_value("fax", Contact.fax)
+        self.change_field_value("email", Contact.email)
+        self.change_field_value("email2", Contact.email2)
+        self.change_field_value("homepage", Contact.homepage)
+        self.change_field_value("address2", Contact.adress2)
 
 
 
-    def change_field_value(self, field_firstname, text):
+
+
+    def change_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
-            wd.find_element_by_name(field_firstname).click()
-            wd.find_element_by_name(field_firstname).clear()
-            wd.find_element_by_name(field_firstname).send_keys(text)
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
 
-    def edit_first_contact(self, new_contact_data):
+    def edit_first_contact(self, Contact):
         wd = self.app.wd
         self.open_home_page()
         # select edit contact
         wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
-        self.fill_contact_form(new_contact_data)
+        self.fill_contact_form(Contact)
         wd.find_element_by_name("update").click()
 
     def select_first_contact(self):
