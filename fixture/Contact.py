@@ -65,7 +65,8 @@ class ContactHelper:
     def open_home_page(self):
         # open home page
         wd = self.app.wd
-        wd.get("http://localhost/addressbook")
+        if not wd.current_url.endswith("/addressbook"):
+            wd.get("http://localhost/addressbook")
 
     def count_contact(self):
         wd = self.app.wd
