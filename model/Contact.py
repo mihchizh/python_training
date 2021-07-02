@@ -22,3 +22,12 @@ class Contact:
         self.phone2 = phone2
         self.notes = notes
         self.id = id
+
+    def __eq__(self, other):
+        return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname
+
+    def id_or_max(self):
+        if self.id:
+            return int(self.id)
+        else:
+            return (maxsize)
