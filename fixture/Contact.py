@@ -77,7 +77,6 @@ class ContactHelper:
         wd = self.app.wd
         self.open_home_page()
         contact = []
-
         for element in wd.find_elements_by_name("entry"):
             cells = element.find_elements_by_tag_name("td")
             id_cont = cells[0].find_element_by_name("selected[]").get_attribute("value")
