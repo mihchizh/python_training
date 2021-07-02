@@ -77,7 +77,7 @@ class ContactHelper:
         wd = self.app.wd
         self.open_home_page()
         contact = []
-        for element in wd.find_elements_x("Select"):
+        for element in wd.find_elements_by_css_selector("td.entry"):
             text = element.text
             id = element.find_element_by_name("selected[]").get_attribute("value")
             contact.append(Contact(name=text, id=id))
@@ -85,5 +85,3 @@ class ContactHelper:
 
 
 
-//*[@id="maintable"]/tbody/tr[2]/td[2]
-//*[@id="maintable"]/tbody/tr[3]/td[2]
