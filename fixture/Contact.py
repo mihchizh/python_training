@@ -42,7 +42,10 @@ class ContactHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-    def edit_first_contact(self, Contact):
+    def edit_first_contact(self):
+        self.edit_contact_by_index(0)
+
+    def edit_contact_by_index(self, index, Contact):
         wd = self.app.wd
         self.open_home_page()
         # select edit contact
