@@ -101,5 +101,17 @@ class ContactHelper:
                 self.contact_cache.append(Contact(lastname=last_name,firstname=first_name, id=id_cont))
         return list(self.contact_cache)
 
+    def open_contact_to_edit_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[7]
+        cell.find_element_by_tag_name("a").click()
 
+    def open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[6]
+        cell.find_element_by_tag_name("a").click()
 
