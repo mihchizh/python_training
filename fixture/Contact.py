@@ -49,7 +49,7 @@ class ContactHelper:
         wd = self.app.wd
         self.open_home_page()
         # select edit contact
-        wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        wd.find_elements_by_xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img") [index].click()
         self.fill_contact_form(Contact)
         wd.find_element_by_name("update").click()
         self.contact_cache = None
