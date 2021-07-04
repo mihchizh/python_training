@@ -4,7 +4,7 @@ import random
 import pytest
 
 def random_string(prefix, maxlen):
-    simbols = string.ascii_letters + string.digits + string.punctuation + ""*10
+    simbols = string.ascii_letters + string.digits
     return prefix + "".join([random.choice(simbols) for i in range(random.randrange(maxlen))])
 
 testdata = [Contact(firstname="", lastname="")] + [Contact(firstname=random_string("firstname", 10),
