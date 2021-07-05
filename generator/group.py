@@ -16,4 +16,4 @@ testdata = [Group(name="", header="", footer="")] + [
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/groups.json")
 
 with open(file, "w") as f:
-    f.write(json.dumps(testdata, default=lambda x: x.__dict__))
+    f.write(json.dumps(testdata, default=lambda x: x.__dict__, indent=2))
