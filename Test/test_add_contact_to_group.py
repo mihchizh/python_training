@@ -16,5 +16,4 @@ def test_add_contact_to_group(app, orm):
     old_contacts_in_group = list(orm.get_contacts_in_group(Group(id=group.id)))
     app.contact.add_to_group_by_id(contact.id, group.name)
     new_contacts_in_group = list(orm.get_contacts_in_group(Group(id=group.id)))
-    assert contact in new_contacts_in_group
     assert len(old_contacts_in_group) + 1 == len(new_contacts_in_group)
