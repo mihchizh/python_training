@@ -196,4 +196,18 @@ class ContactHelper:
         return Contact(homephone=homephone, workphone=workphone,
                        mobilephone=mobilephone, phone2=phone2)
 
+    def create_if_no_contacts(self, db):
+        self.open_home_page()
+        if len(db.get_contact_list()) == 0:
+            self.create(Contact(firstname="Testwqwq"))
+    contact_cache = None
+
+    def add_to_group_by_id(self, contact_id, group_name):
+        wd = self.app.wd
+        self.open_home_page()
+        wd.find_element_by_id(contact_id).click()
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        wd.find_element_by_name("add").click()
+
 

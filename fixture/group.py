@@ -86,6 +86,12 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("group_footer").click()
 
+    def create_if_no_groups(self, db):
+        self.open_groups_page()
+        if len(db.get_group_list()) == 0:
+            self.create(Group(name="testqwqw"))
+    group_cache = None
+
     def open_groups_page(self):
         # open groups page
         wd = self.app.wd
@@ -112,7 +118,6 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
-
     group_cache = None
 
     def get_group_list(self):
