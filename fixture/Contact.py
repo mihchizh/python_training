@@ -199,7 +199,7 @@ class ContactHelper:
     def create_if_no_contacts(self, db):
         self.open_home_page()
         if len(db.get_contact_list()) == 0:
-            self.create(Contact(firstname="Testwqwq"))
+            self.create_new_contact(Contact(firstname="Testwqwq"))
     contact_cache = None
 
     def add_to_group_by_id(self, contact_id, group_name):
